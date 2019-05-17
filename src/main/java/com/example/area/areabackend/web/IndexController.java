@@ -27,8 +27,6 @@ public class IndexController {
     @Autowired
     private SwiperService swiperService;
 
-    private ArrayList<Object> indexList = new ArrayList<Object>();
-
     private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
     /**
      * 提供首页数据
@@ -38,6 +36,7 @@ public class IndexController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     private ArrayList<Object> postIndex(String openId) {
+        ArrayList<Object> indexList = new ArrayList<Object>();
         Map<String, Object> docMap = listDocsByOpenId(openId);
         indexList.add(docMap);
         Map<String, Object> specialMap = listSpecials();
