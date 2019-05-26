@@ -6,6 +6,8 @@
     <select id="queryTopics" resultType="com.example.area.areabackend.entity.Topic">
         SELECT id, openId, date, title, content, connect, tag, nickName, avatarUrl, gender, province, city, country
         FROM db_topic
+        ORDER BY id
+        DESC
     </select>
     <select id="queryTopicById" resultType="com.example.area.areabackend.entity.Topic">
         SELECT id, openId, date, title, content, connect, tag, nickName, avatarUrl, gender, province, city, country
