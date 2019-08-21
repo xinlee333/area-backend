@@ -24,12 +24,14 @@ public class DocServiceImpl implements DocService{
             try {
                 return docDao.queryDocByOpenId(openId);
             } catch (Exception e) {
-                logger.warn("根据openId: {}获取作业/备忘录列表失败: {}", openId, e.toString());
-                throw new RuntimeException("根据openId获取作业/备忘录列表失败:" + e.toString());
+                //根据openId获取作业/备忘录列表失败
+                logger.warn("Get homework/memorandum list wrong with openId: {}. {}.", openId, e.toString());
+                throw new RuntimeException("Get homework/memorandum list wrong with openId:" + e.toString());
             }
         } else {
-            logger.warn("openId不能为空");
-            throw new RuntimeException("openId不能为空");
+            //openId不能为空
+            logger.warn("openId cannot be empty.");
+            throw new RuntimeException("openId cannot be empty.");
         }
     }
 
@@ -39,12 +41,14 @@ public class DocServiceImpl implements DocService{
             try {
                 return docDao.queryDoc(openId, docId);
             } catch (Exception e) {
-                logger.warn("根据openId: {}和docId: {}获取作业/备忘录失败: {}", openId, docId, e.toString());
-                throw new RuntimeException("根据openId和docId获取作业/备忘录失败:" + e.toString());
+                //根据openId和docId获取作业/备忘录失败
+                logger.warn("Get homework/memorandum wrong with openId: {} and docId: {}. {}.", openId, docId, e.toString());
+                throw new RuntimeException("Get homework/memorandum wrong with openId and docId:" + e.toString());
             }
         } else {
-            logger.warn("openId: {}和docId: {}均不能为空", openId, docId);
-            throw new RuntimeException("openId和docId不能为空");
+            //openId和docId均不能为空
+            logger.warn("openId: {} and docId:{} neither can be empty.", openId, docId);
+            throw new RuntimeException("openId and docId neither can be empty.");
         }
     }
 
@@ -57,16 +61,19 @@ public class DocServiceImpl implements DocService{
                 if (effectedNum > 0) {
                     return true;
                 } else {
-                    logger.warn("添加作业/备忘录失败, doc: {}", doc);
-                    throw new RuntimeException("添加作业/备忘录失败");
+                    //添加作业/备忘录失败
+                    logger.warn("Add homework/memorandum wrong, doc: {}.", doc);
+                    throw new RuntimeException("Add homework/memorandum wrong.");
                 }
             } catch (Exception e) {
-                logger.warn("添加作业/备忘录失败, doc: {}, {}", doc, e.toString());
-                throw new RuntimeException("添加作业/备忘录失败:" + e.toString());
+                //添加作业/备忘录失败
+                logger.warn("Add homework/memorandum wrong, doc: {}. {}.", doc, e.toString());
+                throw new RuntimeException("Add homework/memorandum wrong:" + e.toString());
             }
         } else {
-            logger.warn("作业/备忘录信息不能为空, doc: {}", doc);
-            throw new RuntimeException("作业/备忘录信息不能为空");
+            //作业/备忘录信息不能为空
+            logger.warn("Homework/memorandum information cannot be empty, doc: {}.", doc);
+            throw new RuntimeException("Homework/memorandum information cannot be empty.");
         }
     }
 
@@ -79,16 +86,19 @@ public class DocServiceImpl implements DocService{
                 if (effectedNum > 0) {
                     return true;
                 } else {
-                    logger.warn("更新作业/备忘录失败, doc: {}", doc);
+                    //更新作业/备忘录失败
+                    logger.warn("Update homework/memorandum wrong, doc: {}.", doc);
                     throw new RuntimeException("更新作业/备忘录失败");
                 }
             } catch (Exception e) {
-                logger.warn("更新作业/备忘录失败, doc: {}, {}", doc, e.toString());
-                throw new RuntimeException("更新作业/备忘录失败:" + e.toString());
+                //更新作业/备忘录失败
+                logger.warn("Update homework/memorandum wrong, doc: {}. {}.", doc, e.toString());
+                throw new RuntimeException("Update homework/memorandum wrong:" + e.toString());
             }
         } else {
-            logger.warn("openId: {}和docId: {}不能为空", doc.getOpenId(), doc.getDocId());
-            throw new RuntimeException("openId和docId不能为空");
+            //openId和docId均不能为空
+            logger.warn("openId: {} and docId:{} neither can be empty.", doc.getOpenId(), doc.getDocId());
+            throw new RuntimeException("openId and docId neither can be empty.");
         }
     }
 
@@ -101,16 +111,19 @@ public class DocServiceImpl implements DocService{
                 if (effectedNum > 0) {
                     return true;
                 } else {
-                    logger.warn("删除作业/备忘录失败, openId: {}, docId: {}", openId, docId);
-                    throw new RuntimeException("删除作业/备忘录失败");
+                    //删除作业/备忘录失败
+                    logger.warn("Delete homework/memorandum wrong, openId: {}, docId: {}.", openId, docId);
+                    throw new RuntimeException("Delete homework/memorandum wrong.");
                 }
             } catch (Exception e) {
-                logger.warn("删除作业/备忘录失败, openId: {}, docId: {}, {}", openId, docId, e.toString());
-                throw new RuntimeException("删除作业/备忘录失败:" + e.toString());
+                //删除作业/备忘录失败
+                logger.warn("Delete homework/memorandum wrong, openId: {}, docId: {}. {}.", openId, docId, e.toString());
+                throw new RuntimeException("Delete homework/memorandum wrong:" + e.toString());
             }
         } else {
-            logger.warn("openId: {}和docId: {}不能为空", openId, docId);
-            throw new RuntimeException("openId和docId不能为空");
+            //openId和docId均不能为空
+            logger.warn("openId: {} and docId:{} neither can be empty.", openId, docId);
+            throw new RuntimeException("openId and docId neither can be empty.");
         }
     }
 }
