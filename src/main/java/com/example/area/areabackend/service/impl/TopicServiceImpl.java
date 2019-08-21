@@ -24,8 +24,9 @@ public class TopicServiceImpl implements TopicService {
         try {
             return topicDao.queryTopics();
         } catch (Exception e) {
-            logger.warn("获取话题列表失败: " + e.toString());
-            throw new RuntimeException("获取话题列表失败:" + e.toString());
+            //获取话题列表失败
+            logger.warn("Get topic list wrong: " + e.toString());
+            throw new RuntimeException("Get topic list wrong:" + e.toString());
         }
     }
 
@@ -35,12 +36,14 @@ public class TopicServiceImpl implements TopicService {
             try {
                 return topicDao.queryTopicById(id);
             } catch (Exception e) {
-                logger.warn("根据id: {}获取话题失败：{}", id, e.toString());
-                throw new RuntimeException("根据id获取话题失败：" + e.toString());
+                //根据id获取话题失败
+                logger.warn("Get topic wrong with id: {}. {}.", id, e.toString());
+                throw new RuntimeException("Get topic wrong with id：" + e.toString());
             }
         } else {
-            logger.warn("id: {}不能为空", id);
-            throw new RuntimeException("id不能为空");
+            //id不能为空
+            logger.warn("id: {} cannot be empty.", id);
+            throw new RuntimeException("id cannot be empty.");
         }
     }
 
@@ -53,16 +56,19 @@ public class TopicServiceImpl implements TopicService {
                 if (effectedNum > 0) {
                     return true;
                 } else {
-                    logger.warn("添加话题失败, topic: {}", topic);
-                    throw new RuntimeException("添加话题失败");
+                    //添加话题失败
+                    logger.warn("Add topic wrong, topic: {}.", topic);
+                    throw new RuntimeException("Add topic wrong.");
                 }
             } catch (Exception e) {
-                logger.warn("添加话题失败, topic: {}, {}", topic, e.toString());
-                throw new RuntimeException("添加话题失败:" + e.toString());
+                //添加话题失败
+                logger.warn("Add topic wrong, topic: {}. {}.", topic, e.toString());
+                throw new RuntimeException("Add topic wrong:" + e.toString());
             }
         } else {
-            logger.warn("话题信息不能为空, topic: {}", topic);
-            throw new RuntimeException("话题信息不能为空");
+            //话题信息不能为空
+            logger.warn("Topic information cannot be empty, topic: {}.", topic);
+            throw new RuntimeException("Topic information cannot be empty.");
         }
     }
 
@@ -85,12 +91,14 @@ public class TopicServiceImpl implements TopicService {
                         return null;
                 }
             } catch (Exception e) {
-                logger.warn("根据tagNumber: {}获取话题失败：{}", tagNumber, e.toString());
-                throw new RuntimeException("根据tagNumber获取话题失败：" + e.toString());
+                //根据tagNumber获取话题失败
+                logger.warn("Get topic wrong with tagNumber: {}. {}.", tagNumber, e.toString());
+                throw new RuntimeException("Get topic wrong with tagNumber：" + e.toString());
             }
         } else {
-            logger.warn("tagNumber: {}不能为空", tagNumber);
-            throw new RuntimeException("tagNumber不能为空");
+            //tagNumber不能为空
+            logger.warn("tagNumber: {} cannot be empty.", tagNumber);
+            throw new RuntimeException("tagNumber cannot be empty.");
         }
     }
 

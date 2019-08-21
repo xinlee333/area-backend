@@ -17,7 +17,8 @@ public class SpecialServiceImpl implements SpecialService {
         try {
             return specialDao.querySpecials();
         } catch (Exception e) {
-            throw new RuntimeException("获取special列表失败:" + e.toString());
+            //获取special列表失败
+            throw new RuntimeException("Get special list wrong:" + e.toString());
         }
     }
 }

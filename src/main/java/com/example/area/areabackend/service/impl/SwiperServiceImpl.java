@@ -17,7 +17,8 @@ public class SwiperServiceImpl implements SwiperService {
         try {
             return swiperDao.querySwipers();
         } catch (Exception e) {
-            throw new RuntimeException("获取swiper列表失败:" + e.toString());
+            //获取swiper列表失败
+            throw new RuntimeException("Get swiper list wrong:" + e.toString());
         }
     }
 }
