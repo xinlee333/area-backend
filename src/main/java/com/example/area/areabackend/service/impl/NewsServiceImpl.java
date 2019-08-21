@@ -17,7 +17,8 @@ public class NewsServiceImpl implements NewsService{
         try {
             return newsDao.queryNews();
         } catch (Exception e) {
-            throw new RuntimeException("获取news列表失败:" + e.toString());
+            //获取news列表失败
+            throw new RuntimeException("Get news list wrong:" + e.toString());
         }
     }
 }
