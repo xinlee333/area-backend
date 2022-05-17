@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.area.areabackend.dao.UserDao">
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id"
+            parameterType="com.example.area.areabackend.entity.DBInsertUser">
+        INSERT INTO user
+        (username, password)
+        VALUES
+        (#{username}, #{password})
+    </insert>
+    <select id="selectUser" resultType="com.example.area.areabackend.entity.DBSelectUser">
+        SELECT id
+        FROM user
+        WHERE username=#{username} AND password=#{password}
+    </select>
+</mapper>

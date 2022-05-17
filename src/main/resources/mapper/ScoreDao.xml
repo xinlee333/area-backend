@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.area.areabackend.dao.ScoreDao">
+    <select id="queryScore" resultType="com.example.area.areabackend.entity.DBQueryScore">
+        SELECT level, score
+        FROM score
+        WHERE userid=#{userId} AND gametag=#{gameTag}
+    </select>
+    <insert id="saveScore">
+        INSERT INTO score
+        (userid, gametag, level, score)
+        VALUES
+        (#{userId}, #{gameTag}, #{level}, #{score})
+        ON DUPLICATE KEY UPDATE score=#{score}
+    </insert>
+</mapper>
